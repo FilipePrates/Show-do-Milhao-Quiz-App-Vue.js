@@ -18,7 +18,7 @@
               <v-btn large color="#669933" @click = "selectAlt(3)" :disabled = "disableWatched[3]" >{{pergDaVez.alts[3]}}</v-btn>
             </div>
 
-            <p>{{disableWatched}}</p>
+            <!-- <p>{{disableWatched}}</p> -->
 
       </v-flex>
     </v-layout>
@@ -38,19 +38,14 @@ export default {
   },
 
   watch: {
-    disable: function(oldVal,newVal)  {
+    disable: function(newVal,oldVal)  {
         console.log(newVal)
-        this.disableWatched[0] = newVal[0]
-        this.disableWatched[1] = newVal[1]
-        this.disableWatched[2] = newVal[2]
-        this.disableWatched[3] = newVal[3]
+        this.disableWatched = newVal
       },
-      deep: true
   },
 
   methods: {
     selectAlt(alternativa) {
-      //console.log(alternativa);
       this.$emit('altSelecionada', alternativa);
     }
   }

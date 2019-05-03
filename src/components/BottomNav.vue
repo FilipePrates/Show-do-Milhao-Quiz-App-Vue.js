@@ -6,7 +6,7 @@
       dark
       shift
     >
-      <v-btn dark>
+      <v-btn to='/info' dark>
         <span>Info</span>
         <v-icon>info</v-icon>
       </v-btn>

@@ -4,6 +4,9 @@
       align-center
       wrap
     >
+      <v-flex text-xs-center>
+        <img alt="Milhao" src="../../public/Show_do_Milhão_logo.gif" height="250" width="350">
+      </v-flex>
 
       <Pergunta :pergDaVez="pergDaVez"/>
 
@@ -27,8 +30,6 @@
                    :pergDaVez = "pergDaVez"
                    :disable = "disable"/>
       </v-flex>
-      <!-- <Plateia/> -->
-
 
       <Ajudas @flagUniver = "ajudaUniver"
               @flag50 = "ajuda50"
@@ -39,14 +40,14 @@
 
       <h1>Valendo {{pontos}} reais</h1>
 
-      <p>{{disable}}</p>
-
+      <!-- <p>{{disable}}</p> -->
       <!-- <h1>{{pergDaVez}}</h1> -->
       <!-- <h1>flagUniver: {{flagUniver}}</h1>
       <h1>flag50: {{flag50}}</h1>
       <h1>flagPlat: {{flagPlat}}</h1> -->
 
     </v-layout>
+    
     <BottomNav/>
 
   </v-container>
@@ -154,13 +155,14 @@
       },
 
       sortearPergunta() {
+        this.disable = [false,false,false,false];
         // const indexSorteado = Math.floor(Math.random() * this.listaPerg.length)
         this.pergId = (this.pergId+1) % 6;
 
         this.pergDaVez.title = this.listaPerg[this.pergId].title;
         this.pergDaVez.alts = this.listaPerg[this.pergId].alts;
 
-        this.disable = [false,false,false,false];
+
 
         this.flagflagPlat = 0;
 
@@ -176,25 +178,20 @@
         if (this.flag50 == 0) {
           switch (this.listaPerg[this.pergId].resp) {
             case 0:
-              this.disable[1] = true
-              this.disable[3] = true
+              this.disable = [false,true,false,true]
               console.log(0)
               break;
             case 1:
-              this.disable[0] = true
-              this.disable[3] = true
+              this.disable = [true,false,false,true]
               console.log("mudando o disable")
-
               break;
             case 2:
-              this.disable[1] = true
-              this.disable[0] = true
+              this.disable = [true,true,false,false]
               console.log(2)
 
               break;
             case 3:
-              this.disable[0] = true
-              this.disable[2] = true
+              this.disable = [true,false,true,false]
               console.log(3)
 
               break;
